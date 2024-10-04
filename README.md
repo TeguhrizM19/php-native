@@ -1,3 +1,3 @@
 # php-native
 
-Repository untuk menyimpan aplikasi php
+Repository untuk menyimpan aplikasi php native
