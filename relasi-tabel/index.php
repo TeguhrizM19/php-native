@@ -62,24 +62,21 @@ if (isset($_POST['simpan-siswa'])) {
                 <tbody class="table-group-divider">
                   <?php $no = 1; ?>
                   <?php foreach ($siswa as $sw) : ?>
-                  <tr>
-                    <th scope="row" class="text-center"><?= $no; ?></th>
-                    <td><?= $sw['nama'] ?></td>
-                    <td>
-                      <?php foreach ($kelas as $kls) : ?>
-                        <?php if ($kls['id_kelas'] == $sw['id_kelas']) {
-                          echo $kls['kelas'];
-                        } ?>
-                      <?php endforeach; ?>
-                    </td>
-                    <td>
-                      <!-- Button trigger modal 3 (Edit Siswa) -->
-                      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop-3">
-                        Edit
-                      </button>
-                      <a href="" class="btn btn-danger">hapus</a>
-                    </td>
-                  </tr>
+                    <tr>
+                      <th scope="row" class="text-center"><?= $no; ?></th>
+                      <td><?= $sw['nama'] ?></td>
+                      <td>
+                        <?php foreach ($kelas as $kls) : ?>
+                          <?php if ($kls['id_kelas'] == $sw['id_kelas']) {
+                            echo $kls['kelas'];
+                          } ?>
+                        <?php endforeach; ?>
+                      </td>
+                      <td>
+                        <a href="update.php?id=<?= $sw['id_siswa']; ?>" class="btn btn-warning">edit</a>
+                        <a href="delete.php?id=<?= $sw['id_siswa']; ?>" class="btn btn-danger">hapus</a>
+                      </td>
+                    </tr>
                   <?php $no++ ?>
                   <?php endforeach; ?>
                 </tbody>
@@ -154,35 +151,5 @@ if (isset($_POST['simpan-siswa'])) {
       </div>
     </div>
   </div>
-  
-  <!-- Modal 3 (Edit Siswa) -->
-  <div class="modal fade" id="staticBackdrop-3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel-3" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel-3">Edit Siswa</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="" method="post">
-            <div class="mb-3">
-              <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama">
-            </div>
-            <div class="mb-3">
-              <select class="form-select form-select-sm" name="id_kelas" aria-label="Small select example">
-                <option selected>Pilih Kelas</option>
-                <?php foreach ($kelas as $kls) : ?>
-                  <option value="<?= $kls['id_kelas'] ?>"><?= $kls['kelas'] ?></option>
-                <?php endforeach; ?>
-              </select>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-              <button type="submit" name="simpan_kelas" class="btn btn-primary">Simpan</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+    
 </html>
