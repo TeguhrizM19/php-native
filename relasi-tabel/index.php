@@ -4,21 +4,6 @@ include 'function.php';
 $kelas = query("SELECT * FROM kelas");
 $siswa = query("SELECT * FROM siswa");
 
-if (isset($_POST['simpan-siswa'])) {
-  if (tambah_siswa($_POST) > 0) {
-    echo "<script>
-            alert('data berhasil disimpan');
-            document.location.href= index.php;
-          </script>";
-    // header('location: index.php');
-  } else {
-    echo "<script>
-            alert('data berhasil disimpan');
-            document.location.href= index.php;
-          </script>";
-  }
-}
-
 ?>
 
 <!doctype html>

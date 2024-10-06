@@ -30,18 +30,38 @@ if (isset($_POST['simpan_kelas'])) {
   }
 }
 
-function tambah_siswa($data) {
-  global $conn;
+if (isset($_POST['simpan-siswa'])) {
+  $nama = htmlspecialchars($_POST['nama']);
+  $id_kelas = htmlspecialchars($_POST['id_kelas']);
 
-  $nama = htmlspecialchars($data['nama']);
-  $id_kelas = htmlspecialchars($data['id_kelas']);
-
-  $query = "INSERT INTO siswa VALUES ('', '$nama', '$id_kelas')";
-
-  mysqli_query($conn, $query);
-
-  return mysqli_affected_rows($conn);
+  $query = mysqli_query($conn, "INSERT INTO siswa (nama, id_kelas) 
+                                      VALUES ('$nama', '$id_kelas')");
+  if ($query) {
+    header('location: index.php');
+    // echo "<script>
+    //         alert('data berhasil disimpan');
+    //         document.location.href= index.php;
+    //       </script>";
+  } else {
+    header('location: index.php');
+    // echo "<script>
+    //         alert('data berhasil disimpan');
+    //         document.location.href= index.php;
+    //       </script>";
+  }
 }
+// function tambah_siswa($data) {
+//   global $conn;
+
+//   $nama = htmlspecialchars($data['nama']);
+//   $id_kelas = htmlspecialchars($data['id_kelas']);
+
+//   $query = "INSERT INTO siswa VALUES ('', '$nama', '$id_kelas')";
+
+//   mysqli_query($conn, $query);
+
+//   return mysqli_affected_rows($conn);
+// }
 
 function update_siswa($ubah) {
   global $conn;
